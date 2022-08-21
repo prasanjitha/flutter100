@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter100/bloc_concept_for_all_example/stream_builder_example/stream_builder_example_page_provider.dart';
+import 'bloc_concept_for_all_example/counter_page/counter_page_provider.dart';
 import 'bloc_concept_for_all_example/student_data_page/student_home_page_provider.dart';
 import 'views/future_api_example.dart';
 import 'views/stream_data_example_one.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StudentPageProvider(),
+      home: CounterPageProvider(),
     );
   }
 }
