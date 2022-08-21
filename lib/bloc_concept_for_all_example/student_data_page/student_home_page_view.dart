@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter100/bloc_concept_for_all_example/student_data_page/student_home_page_bloc.dart';
 import 'package:flutter100/bloc_concept_for_all_example/student_data_page/student_home_page_state.dart';
+import 'package:flutter100/bloc_concept_for_all_example/student_information_page/student_information_page_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'student_home_page_event.dart';
@@ -47,6 +48,12 @@ class _StudentPageViewState extends State<StudentPageView> {
                 ),
                 title: Text(state.users[index].email.toString()),
                 onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => StudentInformationPageProvider(
+                          user: state.users[index].name.toString())),
+                    ),
+                  );
                   print(state.users[index].toJson());
                 },
               );

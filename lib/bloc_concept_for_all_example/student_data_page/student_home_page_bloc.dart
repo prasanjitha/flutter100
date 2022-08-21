@@ -19,10 +19,11 @@ class StudentPageBloc extends Bloc<StudentPageEvent, StudentPageState> {
 
   Future<List<User>> getUsers() async {
     log("hello");
-    var url = Uri.parse('https://randomuser.me/api/?results=20');
-    late http.Response response;
     List<User> users = [];
     try {
+      var url = Uri.parse('https://randomuser.me/api/?results=2');
+      late http.Response response;
+
       response = await http.get(url);
       if (response.statusCode == 200) {
         Map peopleData = jsonDecode(response.body);
