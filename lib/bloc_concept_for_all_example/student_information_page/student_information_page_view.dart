@@ -19,17 +19,6 @@ class StudentInformationPageView extends StatefulWidget {
 
 class _StudentInformationPageViewState
     extends State<StudentInformationPageView> {
-  final TextEditingController _controller = TextEditingController();
-  @override
-  void initState() {
-    super.initState();
-    StudentInformationPageBloc bloc =
-        BlocProvider.of<StudentInformationPageBloc>(context);
-    bloc.add(GetUserDataEvent());
-    _controller.text = bloc.state.userName.toString();
-    // _controller.text = 'kamal';
-  }
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -56,7 +45,7 @@ class _StudentInformationPageViewState
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextField(
-                controller: _controller,
+                controller: bloc.controller,
                 decoration: const InputDecoration(hintText: 'Enter Name'),
               ),
             ),
@@ -86,7 +75,7 @@ class _StudentInformationPageViewState
                   _formKey.currentState!.save();
                   log(text);
                 }
-                bloc.add(SubmitUserDataEvent(name: _controller.text));
+                bloc.add(SubmitUserDataEvent(name: bloc.controller.text));
               },
               child: const Text('Submit'),
             ),

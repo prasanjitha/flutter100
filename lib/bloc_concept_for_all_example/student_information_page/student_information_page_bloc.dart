@@ -9,15 +9,17 @@ import 'student_information_page_state.dart';
 
 class StudentInformationPageBloc
     extends Bloc<StudentInformationPageEvent, StudentInformationPageState> {
+  final TextEditingController controller = TextEditingController();
   StudentInformationPageBloc(BuildContext context, String username)
       : super(StudentInformationPageState.initialState) {
     on<GetUserDataEvent>((event, emit) async {
-      emit(state.clone(userName: username));
+      controller.text = username;
+      emit(state.clone(userName: username, init: true));
     });
-    log(username.toString());
+    add(GetUserDataEvent());
 
     on<SubmitUserDataEvent>((event, emit) async {
-      log(event.name);
+      log('hello ' + event.name);
     });
   }
 }
