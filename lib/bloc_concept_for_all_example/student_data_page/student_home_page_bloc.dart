@@ -10,11 +10,12 @@ import 'package:http/http.dart' as http;
 class StudentPageBloc extends Bloc<StudentPageEvent, StudentPageState> {
   StudentPageBloc(BuildContext context) : super(StudentPageState.initialState) {
     on<LoadUserData>((event, emit) async {
+      log('message');
       emit(state.clone(isLoading: true));
-
       List<User> users = await getUsers();
       emit(state.clone(users: users, isLoading: false));
     });
+    add(LoadUserData());
   }
 
   Future<List<User>> getUsers() async {
